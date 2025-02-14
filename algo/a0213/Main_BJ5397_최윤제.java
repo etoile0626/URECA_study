@@ -8,7 +8,7 @@ import java.io.OutputStreamWriter;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
-public class Main_BJ5497_최윤제 {								//키로거
+public class Main_BJ5397_최윤제 {								//키로거
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
