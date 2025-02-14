@@ -7,7 +7,10 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.LinkedList;
 import java.util.ListIterator;
-
+/*
+ * 초기 접근방식은 강사님이랑 같았으나(cnt변수를 인덱스로 사용) 시간초과가 나타남
+ * 이유: str.charAt(j)의 과도한 호출이 가장 컸을것으로 보임=>미리 변수 하나에 저장해두고 쓰기
+ */
 public class Main_BJ5397_최윤제 {								//키로거
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
