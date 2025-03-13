@@ -8,6 +8,7 @@
 	<!-- mapper를 늘리고 싶으면 이름만 바꿔서 더 늘리면 됨 -->
 		<mapper resource="mapper/mybatis-mapper.xml" /> 
 		<mapper resource="mapper/emptest-mapper.xml" /> 
+		<mapper resource="mapper/interface-mapper.xml"/>
 	</mappers>
 
 </configuration>
