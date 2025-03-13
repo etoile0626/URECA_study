@@ -6,10 +6,80 @@
 <!--mapper에 쿼리문 작성 -->
 <mapper namespace = "EmpTestMapper">
 <!-- 쿼리문 중 ?에 값을 채워주는게 파라미터타입, 결과를 받아오는게 result 타입, 링크형태여야함(컨트롤클릭이 눌러져야 제대로 쓴거) -->
+	<select id="selectSearch" parameterType="kr.co.ureca.dto.EmpSearchDTO" resultType="kr.co.ureca.dto.EmpDTO">
+		select empno, ename, job, mgr, hiredate, sal, comm, deptno
+		from emp
+		where 1=1
+		<if test="ename != null and ename != ''">
+			and ename = #{ename}
+		</if>
+		<if test="job != null and job != ''">
+			and job = #{job}
+		</if>
+		<if test="deptno != null and deptno != ''">
+			and deptno = #{deptno}
+		</if>
+	</select>
+	
+	<select id="selectIn" parameterType="java.util.ArrayList" resultType="kr.co.ureca.dto.EmpDTO">
+		select empno, ename, job, mgr, hiredate, sal, comm, deptno
+		from emp
+		where ename in
+			<foreach collection="list" item="strEname" open="(" separator="," close=")">
+			#{strEname}
+			</foreach>
+	</select>
+	
+	<update id="empUpdate" parameterType="kr.co.ureca.dto.EmpDTO">
+		update emp
+		set empno = #{empno}
+			<if test="ename != null and ename != ''">
+				, ename = #{ename}
+			</if>
+			<if test="job != null and job != ''">
+				, job = #{job}
+			</if>
+			<if test="mgr != null and mgr != ''">
+				, mgr = #{mgr}
+			</if>
+			<if test="hiredate != null and hiredate != ''">
+				, hiredate = #{hiredate}
+			</if>
+			<if test="sal != null and sal != ''">
+				, sal = #{sal}
+			</if>
+			<if test="comm != null and comm != ''">
+				, comm = #{comm}
+			</if>
+			<if test="deptno != null and deptno != ''">
+				, deptno = #{deptno}
+			</if>
+		where empno = #{empno}
+	</update>
+	
+	<insert id="empInsertList" parameterType="java.util.ArrayList">
+		INSERT INTO emp (ename, job, mgr, hiredate, sal, comm, deptno) VALUES
+		<!-- 3건을 연달아 받으므로 for each문 사용, 구분자 컴마(,)->컴마 단위로 반복문 쓰겠다? -->
+		<foreach collection="list" item="dto" separator=",">
+		( #{dto.ename}, #{dto.job}, #{dto.mgr}, now(), #{dto.sal}, #{dto.comm}, #{dto.deptno} )
+		</foreach>
+	</insert>
+	
+	<insert id="empInsert" parameterType="kr.co.ureca.dto.EmpDTO"> <!-- int는 자동으로 받아와지기에 resultType을 적을 필요는 없다 -->
+		INSERT INTO emp (ename, job, mgr, hiredate, sal, comm, deptno)
+		<!-- EmpDTO에 있는 변수들이 중괄호 안에 들어옴, 숫자 필드에 문자열 넣어도 괜찮음 -->
+		VALUES ( #{ename}, #{job}, #{mgr}, now(), #{sal}, #{comm}, #{deptno} )
+		<!-- insert에서 가져올 값, 가져올 타입, 수행순서(앞에서 할건지 뒤에서 할건지) -->
+		<selectKey keyProperty="empno" resultType="java.lang.String" order="AFTER"> 
+			select @@identity <!-- mysql에서만 identity 사용가능, 근데 뭔 뜻이지 -->
+		</selectKey>
+	</insert>
+	
 	<select id="empSelectByEname" parameterType="java.lang.String" resultType="kr.co.ureca.dto.EmpDTO"> 
 		SELECT empno, ename, job, mgr, hiredate, sal, comm, deptno 
-		FROM emp WHERE ename = #{ename} 
+		FROM emp WHERE ename = #{ename}  <!-- mybatis에서 ename을 자동으로 매핑시켜줌 -->
 	</select>
+	
 	<select id="empSelectAll" resultType="kr.co.ureca.dto.EmpDTO"> 
 		SELECT empno, ename, job, mgr, hiredate, sal, comm, deptno 
 		FROM emp ORDER BY ename 
