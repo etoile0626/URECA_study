@@ -28,7 +28,7 @@ public class HomeController {
 	@RequestMapping(value = "/hello", method = RequestMethod.GET) 
 	public String hello() {			//controller에 있는 메소드들은 보통 string 리턴
 		
-		//mybatis 호출 어케함? => sqlSesssion.selectList()를 통해, 괄호 안에는 "mapperName.queryName"의 형태로
+		//mybatis 호출 어케함?(근데 이건 레포지토리에서 해야하긴 함) => sqlSesssion.selectList()를 통해, 괄호 안에는 "mapperName.queryName"의 형태로
 		List<EmpDTO> list = sqlSession.selectList("MybatisSample.SampleEmp"); 
 		System.out.println(list);
 		
