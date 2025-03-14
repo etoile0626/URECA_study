@@ -1,0 +1,83 @@
+No Sql
+ - Non Relational Operation Database SQL
+ - 관계형 데이터베이스(중복 최소화, 무결성, 정규화, JOIN으로 인한 성능 저하 가능성, 엄격한 트랜잭션 관리(ACID))의 개념과 다르다.
+ - 중첩 데이터 허용 ---> join의 최소화 ---> 확장성, 성능
+ - 비정형 데이터 구조 ---> 확장성, 유연성
+ - 분산DB & 병렬처리 ---> 성능
+ - 비정형 데이터 구조 & 분산DB & 병렬처리 ---> 빅데이터 처리
+ - 전통적인 sql을 사용하지 않는다.
+ - data 처리 함수를 통해 전통적인 sql을 대체한다.
+
+MongoDB
+ - BSON(Binary JSON - 용량 작고, 처리 속도 빠름, 길이 정보 포함되어 있음) 타입의 document 방식을 사용한다.
+ - RDB(table, row, column, pk, relationship)
+ - MongoDB(collection, document, field, object_id, link)
+ - 몽고DB의 database의 개념은 collection의 집합 또는 container.
+ - 몽고DB의 collection : collection 내의 document들은 서로 다른 속성을 가질 수 있다.
+ - 몽고DB의 document : {sale_no:'111', sale_date:'2024-07-24', {slae_dtl_no:'A123', prdt_no:'P999'}}
+ - Sharding(분산) / Replica(복제) 기능
+ - Memory Mapping 기반 빅데이터 처리
+ - BASE(Basically Available, Soft state, Eventual consistency) 기반 트랜잭션 처리
+ - Basically Available : 시스템은 항상 응답을 제공하며, 일시적인 고장이나 네트워크 지연에도 높은 가용성을 유지한다.
+ - Soft state : 시스템의 상태는 시간에 따라 변할 수 있으며, 일관성이 항상 보장되지 않는다.
+ - Eventual consistency : 시스템은 일정 시간이 지난 후에야 최종적으로 일관된 상태를 달성한다.
+ - 구조화되지 않은 데이터 처리에 우수
+ - 복잡한 트랜잭션, 엄격한 일관성, 전통적인 조인 연산이 필요한 경우는 적합하지 않을 수 있다.
+
+{ 필드: { $gt: 값 } }
+{ 필드: { $gte: 값 } }
+{SAL:{$gt:1200}}
+
+{ 필드: { $lt: 값 } }
+{ 필드: { $lte: 값 } }
+
+{ 필드: { $eq: 값 } }
+{ 필드: { $ne: 값 } }
+{ SAL:1200 }
+{ SAL:{ $ne:1200 } }
+{ JOB: { $ne:'SALESMAN' } }
+
+{ 필드: { $in: [ 값1, 값2, 값3, ... ] }
+{ 필드: { $nin: [ 값1, 값2, 값3, ... ] }
+{ SAL:{ $in:[1250, 3000, 5000] } }
+{ SAL:{ $nin:[1250, 3000, 5000] } }
+
+{ $and: [{ 조건1 }, { 조건2 }, ...] }
+{ $or: [{ 조건1 }, { 조건2 }, ...] }
+{ $nor: [{ 조건1 }, { 조건2 }, ...] }
+{ JOB:'MANAGER', SAL:{ $gt:2500 } }
+{ $or:[ { JOB:'MANAGER' },{ SAL:{ $gt:2500 } } ] }
+
+/* 스프링 몽고DB 연동
+ * 1. Mongo250314Application -> @SpringBootApplication(exclude={DataSourceAutoConfiguration.class}) 적용
+ * 2.와 3. 중에 선택 설정.
+ * 2. application.properties 설정
+		spring.data.mongodb.host=127.0.0.1
+		spring.data.mongodb.port=27017
+		spring.data.mongodb.database=ureca
+ * 3. MongoConfig.java 설정 참고
+ */
+
+*** application.properties
+		spring.data.mongodb.host=127.0.0.1
+		spring.data.mongodb.port=27017
+		spring.data.mongodb.database=ureca
+
+*** MongoConfig.java
+@Configuration
+public class MongoConfig {
+
+	public MongoClient mongoClient() {
+		return MongoClients.create("mongodb://localhost:27017");
+	} // mongoClient
+
+	public SimpleMongoClientDatabaseFactory mongoClientDBFactory() {
+		return new SimpleMongoClientDatabaseFactory(mongoClient(), "ureca");
+	} // mongoClientDBFactory
+
+	@Bean
+	public MongoOperations mongoOps() {
+		return new MongoTemplate(mongoClientDBFactory());
+	} // mongoOps
+
+} // class

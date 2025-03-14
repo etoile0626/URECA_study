@@ -1,0 +1,76 @@
+전체 db 보기
+show dbs
+
+db 선택 또는 db가 없으면 만든다
+use ureca
+
+현재 db 보기
+db
+
+현재 db의 전체 테이블 보기
+show collections
+db.getCollectionNames()
+
+Collection에 데이터 입력 (Collection이 없는 경우, Collection을 만든 후 입력)
+db.user.insert({name:"jack"})
+
+Collection 삭제 (DB의 모든 Collection을 삭제하면, DB도 함께 삭제됨)
+db.user.drop()
+
+데이터베이스 삭제
+db.dropDatabase()
+
+테이블 생성
+db.createCollection("product")
+
+데이터 입력
+db.test_board.insert({title:"ok",writer:"ro",con:"날씨 굿~~"})
+db.test_board.insert({title:"회식은?",contents:"알수없음"})
+db.test_board.insert({title:"test1",writer:"ro",con:"this is test 1"})
+db.test_board.insert({title:"test2",contents:"this is test 2"})
+db.test_board.insertMany([{title:"gogo", con:"롤 한 판?"},{title:"피곤해", writer:"링크", contents:"where is jelda???"}])
+
+데이터 입력
+db.book.insert({bookname:"축구의 역사"		,publisher:"굿스포츠"	,price:7100})
+db.book.insert({bookname:"축구 아는 여자"		,publisher:"나무수"	,price:13000})
+db.book.insert({bookname:"축구의 이해"		,publisher:"대한미디어"	,price:22000})
+db.book.insert({bookname:"골프 바이블"		,publisher:"대한미디어"	,price:35000})
+db.book.insert({bookname:"피겨 교본"		,publisher:"굿스포츠"	,price:8000})
+db.book.insert({bookname:"배구 단계별기술"		,publisher:"굿스포츠"	,price:6000})
+db.book.insert({bookname:"야구의 추억"		,publisher:"이상미디어"	,price:20000})
+db.book.insert({bookname:"야구를 부탁해"		,publisher:"이상미디어"	,price:13000})
+db.book.insert({bookname:"올림픽 이야기"		,publisher:"삼성당"	,price:7500})
+db.book.insert({bookname:"Olympic Champions"	,publisher:"Pearson"	,price:13000})
+
+테이블 전체 조회
+db.test_board.find()
+db.test_board.find({})
+
+테이블 조회 조건으로 조회
+db.test_board.find({writer:"ro"})
+
+db.book.find({price:{$eq:13000}})
+db.book.find({price:{$ne:13000}})
+db.book.find({price:{$gt:13000}})
+db.book.find({price:{$gte:13000}})
+db.book.find({price:{$lt:13000}})
+db.book.find({price:{$lte:13000}})
+
+db.book.find({price:{$in:[13000, 8000]}})
+db.book.find({price:{$nin:[13000, 8000]}})
+
+db.book.find({ publisher:"굿스포츠", price:{$in:[13000, 8000]} })
+db.book.find({ publisher:{$eq:"굿스포츠"}, price:{$in:[13000, 8000]} })
+
+db.book.find({ $and : [{publisher:"굿스포츠"}, {price:{$in:[6000,8000]}}] })
+db.book.find({ $or : [{publisher:"굿스포츠"}, {price:{$gt:13000}}] })
+
+db.book.find({ $and : [{publisher:{$eq:"굿스포츠"}}, {price:{$in:[6000,8000]}}] })
+db.book.find({ $or : [{publisher:{$eq:"굿스포츠"}}, {price:{$gt:13000}}] })
+
+데이터 수정
+db.test_board.findOneAndUpdate({title:"ok"}, {$set: {contents:"up1"}})
+
+데이터 삭제
+db.book.deleteOne({bookname:"피겨 교본"})
+db.book.deleteMany({price:13000})
