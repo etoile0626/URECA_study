@@ -43,6 +43,11 @@ public class EmpTestRepository { 		//requestmapping을 제외하고 컨트롤러
 		//EmpDTO dto = interface1.getEmpByEname2(ename);
 		return dto;
 	}
+	
+	public List<EmpDTO> empSelectByLike(String ename) {
+		List<EmpDTO> list = sqlSession.selectList("EmpTestMapper.empSelectByLike", ename);
+		return list;
+	}
 
 	public int empInsert(EmpDTO dto) {
 		//0. xml을 사용한 Mapper
