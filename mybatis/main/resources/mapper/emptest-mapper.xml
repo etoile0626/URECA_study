@@ -75,6 +75,12 @@
 		</selectKey>
 	</insert>
 	
+	<select id="empSelectByLike" parameterType="java.lang.String" resultType="kr.co.ureca.dto.EmpDTO"> 
+		SELECT empno, ename, job, mgr, hiredate, sal, comm, deptno 
+		FROM emp 
+		WHERE ename like concat('%', #{ename}, '%')  <!-- % 어떻게 붙일래? -> db의 concat 메소드 사용하는게 가장 나음 -->
+	</select>
+	
 	<select id="empSelectByEname" parameterType="java.lang.String" resultType="kr.co.ureca.dto.EmpDTO"> 
 		SELECT empno, ename, job, mgr, hiredate, sal, comm, deptno 
 		FROM emp WHERE ename = #{ename}  <!-- mybatis에서 ename을 자동으로 매핑시켜줌 -->
