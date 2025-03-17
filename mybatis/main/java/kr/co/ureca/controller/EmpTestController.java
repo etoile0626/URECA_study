@@ -29,6 +29,10 @@ public class EmpTestController {
 	public String empSelectByEname() {
 		EmpDTO dto = empTestService.empSelectByEname("ADAMS");
 		System.out.println( dto );
+		
+		List<EmpDTO> list = empTestService.empSelectByLike("L");
+		System.out.println("empSelectByLike : " + list);
+		
 		return "hello";
 	}
 
