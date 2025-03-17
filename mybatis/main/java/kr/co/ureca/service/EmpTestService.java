@@ -25,6 +25,11 @@ public class EmpTestService { 		//requestmapping을 제외하고 컨트롤러에
 		EmpDTO dto = empTestRepository.empSelectByEname(ename);
 		return dto;
 	}
+	
+	public List<EmpDTO> empSelectByLike(String ename) {
+		List<EmpDTO> list = empTestRepository.empSelectByLike(ename);
+		return list;
+	}
 
 	public int empInsert(EmpDTO dto) {
 		int successCnt = empTestRepository.empInsert(dto);
@@ -53,5 +58,6 @@ public class EmpTestService { 		//requestmapping을 제외하고 컨트롤러에
 		List<EmpDTO> list = empTestRepository.selectSearch(dto1);
 		return list;
 	}
+
 	
 }
