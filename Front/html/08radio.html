@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>html은 공백을 하나만 허용해서 많은 공백이 필요한 경우 &nbsp;가 필요함</h1>
+    <!--radio 와 checkbox-->                    <!--기본값으로 체크하는 속성-->
+    <input type="checkbox">수박 
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="checkbox" checked>복숭아
+    <br><br>
+    <!--위보단 이게 더 좋음 => 글자를 찍어도 체크가 가능해짐-->
+    <input type="checkbox" id="fruit1"> <label for="fruit1">수박</label> 
+    <input type="checkbox" id="fruit2"> <label for="fruit2">복숭아</label>
+    <hr width="70%">
+    <!--라디오의 경우 id와 name 모두 필요-->
+    <input type="radio" id="watermelon" name="fruit"> <label for="watermelon"> 수박 </label>
+    <input type="radio" id="peach" name="fruit" checked> <label for="peach" > 복숭아 </label>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--table=표-->
+    <table border="1"> <!--tag의 구성 <이름 속성=값>의 형태-->
+        <tr> <!--table row, 한줄-->
+            <td>아메리카노</td><!--table data, 1칸-->
+            <td>카푸치노</td><!--table data, 1칸-->
+        </tr>
+        <tr> <!--table row, 한줄-->
+            <td>카푸치노</td><!--table data, 1칸-->
+            <td>아메리카노</td><!--table data, 1칸-->
+        </tr>
+    </table>
+    <hr> <!--줄 긋기 태그, 닫는 태그가 없음-->
+    <hr width="70%" align="left"> <!--길이, 위치 조절도 가능-->
+    <table border="1"> <!--border = 외곽선 굵기 길이-->
+        <caption>테이블의 제목->caption에서 </caption>
+        <colgroup> <!--열(col)들을 그룹핑하는 함수-->
+            <col style="width: 350px;"> 
+            <col style="width: 250px;"> 
+            <col style="width: 150px;"> 
+        </colgroup>
+        <tr> <!--table row, 한줄-->
+            <td>아메리카노</td><!--table data, 1칸-->
+            <td rowspan="2">카푸치노</td><!--rowspan=2 -> 2줄을 내가 먹겠다-->
+        </tr>
+        <tr> <!--table row, 한줄-->
+            <td>카푸치노</td>
+            <td>아메리카노</td>
+        </tr>
+        <tr> <!--table row, 한줄-->
+            <td colspan="3">1</td><!--colspan=3 -> 3칸짜리라는 뜻?-->
+            <!--<td>2</td>
+                <td>3</td>-->
+        </tr>
+    </table>
+    <table border="1">
+        <tbody>
+            <tr>
+                <td>1</td> <td>홍길동</td> <td>01055125484</td>
+            </tr>
+            <tr>
+                <td>2</td> <td>홍길동</td> <td>01055125484</td>
+            </tr>
+        </tbody><!--body 영역(본문)-->
+        <tfoot> <!--기타 내용들을 작성할 때 사용-->
+            <tr>
+                <td colspan="3"> 문의:010xxxxyyyy gmail</td>
+            </tr>
+        </tfoot><!--마무리-->
+        <thead> <!--얘는 글자가 두꺼움-->
+            <tr> <!--tr이 thead안에서 무조건 들어가야하는 개념임-->
+                <th>No</th> <th>이름</th> <th>전화번호</th>
+            </tr>
+        </thead><!--head 영역(주제)-->
+        <!--이렇게 코드에서 head를 맨 아래로 보내도 웹에서는 헤드를 젤 위로 보냄-->
+    </table>
+</body>
+</html>

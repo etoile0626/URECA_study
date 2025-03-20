@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Form & Button-->
+    <!--form: 서버로 전송할 입력 값의 영역-->
+    <form>
+        <!--disabled, html element 역할을 상실 & 서버 전송도 안됨 =>웬만하면 사용하지 않음-->
+        <input type="text" id="uname" name="uname" value="홍길동" disabled> 이름
+        <br><br>
+        <!--readonly, 말그대로 읽기만 가능-->
+        <input type="text" id="uemail" name="uemail" value="aaa@bbb.com" readonly> 이메일
+        <br><br>
+        <!--required, 입력을 안하면(valure가 없으면) 서버로 데이터 전송을 안함-->
+        <input type="text" id="utel" name="utel" required> 전화번호
+        <hr width="70%">
+        <textarea cols="50", rows="10">
+            여러 줄을 입력하게 해주는 태그
+        </textarea>
+        <input type="button" value="button"> <!--그냥 버튼, 동작을 개발자가 정의해야함-->
+        <input type="submit" value="submit"> <!-- 폼 안의 데이터를 서버로 전송-->
+        <input type="reset" value="reset">  <!--폼 안의 데이터 리셋-->
+    </form>
+</body>
+</html>
