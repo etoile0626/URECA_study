@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*id가 blank인 애만 찾아서 적용해라
+        h1[id="blank"]{background-color: aqua;}*/
+        /*id에 blank가 있으면 적용해라
+        h1[id~="blank"]{background-color: aqua;}*/
+        /*id가 x로 시작하면 적용해라*/
+        h1[id^="x"]{background-color: aqua;}
+        /*id가 g로 끝나면 적용해라*/
+        h1[id$="g"]{background-color: aqua;}
+        /*id에 g가 포함되면 적용해라*/
+        h1[id*="la"]{background-color: aqua;}
+    </style>
+</head>
+<body>
+    <!--attrselector-->
+    <h1 id="blank">asdasdasd</h1>
+    <h1 id=""></h1>
+    <h1 id="">asdasd</h1>
+    <h1 id="blank ssd">asd</h1>
+    <h1 id="xcc">xccsad</h1>
+    <h1 id="asdhg">asdfg</h1>
+    <h1 id="x">xzzxv</h1>
+    <h1 id=""></h1>
+    <h1 id=""></h1>
+</body>
+</html>

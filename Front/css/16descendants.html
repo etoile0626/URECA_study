@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*document object 모델 = 문서의 오브젝트를 문서화 시킨것*/
+        /*div1의 자손들을 전부 찾는데, 그 중에 h1에만 적용해라*/
+        #div1 h1 {background-color: aqua;} /*div1 안의 h1들에게 전부 적용*/
+    </style>
+</head>
+<body>
+    <!--descendants, 자손->얘도 selector임-->
+    <h1>div1의 위</h1>
+    <div id="div1">
+        <h1>div1의 내부, div2의 위</h1>
+        <div id="div2">
+            <h1>div2의 안</h1>
+        </div>
+        <h1>div1의 내부, div2의 아래</h1>
+    </div>
+    <h1>div1의 아래</h1>
+</body>
+</html>

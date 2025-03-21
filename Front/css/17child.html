@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*div1의 자식만 찾아라, 손자 말고*/
+        #div1 > h1 {background-color: aqua;} 
+    </style>
+</head>
+<body>
+    <!--child, 자식->얘도 selector임-->
+    <h1>div1의 위</h1>
+    <div id="div1">
+        <h1>div1의 내부, div2의 위</h1>
+        <div id="div2">
+            <h1>div2의 안</h1>
+        </div>
+        <h1>div1의 내부, div2의 아래</h1>
+    </div>
+    <h1>div1의 아래</h1>
+</body>
+</html>

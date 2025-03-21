@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .colorBox{width: 8.33%; height: 140px; float: left;}
+        /*max-width를 넘어가면 media 안에 있는 구문으로 재정의함*/
+        /*@media [only|noy] 미디어 유형 [and 조건] +뭐 더 있었는데 놓침*/
+        @media only screen and (max-width:786px){
+            .colorBox{width: 100%;}
+        }
+    </style>
+</head>
+<body>
+    <!--media 쿼리, 화면을 줄였을때 아래로 내려서 보이게 리스팅 하고 싶을때 씀-->
+    <div class="colorBox" style="background-color: red;"></div>
+    <div class="colorBox" style="background-color: orange;"></div>
+    <div class="colorBox" style="background-color: yellow;"></div>
+    <div class="colorBox" style="background-color: yellowgreen;"></div>
+    <div class="colorBox" style="background-color: skyblue;"></div>
+    <div class="colorBox" style="background-color: blue;"></div>
+    <div class="colorBox" style="background-color: blueviolet;"></div>
+    <div class="colorBox" style="background-color: red;"></div>
+    <div class="colorBox" style="background-color: orange;"></div>
+    <div class="colorBox" style="background-color: yellow;"></div>
+    <div class="colorBox" style="background-color: yellowgreen;"></div>
+    <div class="colorBox" style="background-color: skyblue;"></div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            height: 250px;
+            width: 250px;
+            position: absolute; /*absolute라 위치 안 잡아주면 한 자리에 다 겹쳐보임*/
+        }
+        #div1{
+            background-color: red;
+            top: 100px; /*이렇게 위치를 잡아줘야 3개 div 다 볼 수 있음*/
+            left: 100px;
+            z-index: 1;
+        }
+        #div2{
+            background-color: coral;
+            top: 150px;
+            left: 150px;
+        }
+        #div3{
+            background-color: aqua;
+            top: 200px;
+            left: 200px;
+            z-index: -1; /*숫자가 작을 수록 밑으로 깔리게 됨(크면 맨 위로?)*/
+        }
+    </style>
+</head>
+<body>
+    <!--Z index-->
+    <div id="div1">div1</div>
+    <div id="div2">div2</div>
+    <div id="div3">div3</div>
+</body>
+</html>

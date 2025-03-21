@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1{
+            background-color: pink;
+            margin-top: 100px;      /*다른 외부 객체와의 거리를 띄우는 margin*/
+            margin-right: 100px;    /*다른 애들이랑 이정도만 떨어져있을게 라는 뜻*/
+            margin-bottom: 100px;   /*외부 객체의 경계선과의 거리를 의미*/
+            margin-left: 100px;
+        }
+        #div2{
+            background-color: blue;
+            margin-top: 100px;    /*얘는 변화가 없음 ->이미 div1이 100을 벌려 놔서 더 벌어질 필요가 없음*/
+        }
+        #div3{
+            background-color: skyblue;
+        }
+        #div4{
+            background-color: red;
+            margin: auto;   /*알아서 마진을 잡아줌, 주로 중앙에 배치시키고 싶을때*/
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <!--margin-->
+    <div id="div1">       <!--특정 영역만을 표시하는 div 태그, 얘가 테두리를 가지는건 아님-->
+        <h1>div1</h1>
+    </div>
+    <div id="div2">     <!--div는 하나의 블록을 갖는 태그?-->
+        <h1>div2</h1>
+    </div>
+    <div id="div3">
+        <h1>div3</h1>
+    </div>
+    <div id="div4">
+        <h1>div4</h1>
+    </div>
+</body>
+</html>
