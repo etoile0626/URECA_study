@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--let : 지역변수 선언의 역할?-->
+    <script>
+        var var1 ="hello";
+        let let1 = "welcome";
+        {
+            var var1 = "nice to meet you";      //재선언
+            let let1 = "thank you";       //중괄호 안에서만 값을 가지는 let1 지역변수
+            console.log(var1);  
+            console.log(let1);                  //누가 나올까?
+            let let2 = "";
+        }
+        console.log("=========================");  
+        console.log(var1);            //var1은 전역변수라 중괄호 안의 값을 그대로 들고 옴
+        console.log(let1);                
+
+        var var1 = "third var call";
+        console.log(var1);
+        //let let1 = "third let call";    //같은 영역에서 중복 선언이 안됨
+        console.log(var1);
+        console.log(let1);
+        console.log(let2);              //선언 블럭을 벗어나 접근 안됨
+    </script>
+</body>
+</html>

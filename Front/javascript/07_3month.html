@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07_3month.html</title>
+</head>
+<body>
+    <script>
+        let onl = new Date();
+        let startDate
+            = new Date(onl.getFullYear(), onl.getMonth(), 1);
+        let endDate
+            = new Date(onl.getFullYear(), onl.getMonth()+1, 0);
+        let 시작일 = startDate.getDate();
+        let 끝일 = endDate.getDate();
+        let 시작요일 = startDate.getDay();
+        document.write("<table border='1'>");
+        document.write("<tr>");
+        for (var i=0; i<=끝일+시작요일-1+시작요일-1; i++) {
+            document.write("<td>");
+            if(i >= 시작요일 && i >= 시작일 && 시작일<=끝일){
+                document.write(시작일);
+                시작일++;
+            }
+            document.write("</td>");
+            if((i+1) % 7 == 0){
+                document.write("</tr>");
+                document.write("<tr>");
+            }
+        }
+        document.write("</tr>");
+        document.write("</table>");
+    </script>
+</body>
+</html>

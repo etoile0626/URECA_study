@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //javascript는 script 태그 안에 작성, head와 body 모두에서 가능
+        //주석은 자바랑 다는 방식이 동일, 소스 보기에서 보임
+        window.alert("head javascript");
+    </script>
+</head>
+<body>
+    <script>
+        alert("body javascript");   //window 생략 가능, alert은 경고창을 의미
+    </script>
+
+    <!--2. 내부 javascript : 자바 스크립트와 html 코드의 분리-->
+    <h1 id="first">h1</h1>
+    <script>
+        //var = 변수 선언
+        var functionVar = document.querySelector("#first"); //first라는 이름의 객체를 찾아와 반환
+        functionVar.onclick = function(){                //h1에서 클릭이 일어나면
+            functionVar.style.color="red";              //색을 빨강으로
+        }
+    </script>
+
+    <!--1. inline java script-->
+    <script>
+        function testFunction(){
+            alert("testFunction 실행");
+        }
+    </script>
+    <button onclick="javascript:testFunction();">this is button</button>
+</body>
+</html>

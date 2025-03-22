@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05event_mouse.html</title>
+</head>
+<body>
+	<input type="text" id="up">
+	<input type="button" value="아래로" onclick="funcDown();">
+    <br>
+	<input type="text" id="down">
+	<input type="button" value="위로" onclick="funcUp();">
+    <script>
+	function funcDown() {
+		down.value = up.value;
+		up.value = "";
+	}
+	function funcUp() {
+		up.value = down.value;
+		down.value = "";
+	}
+    </script>
+</body>
+</html>

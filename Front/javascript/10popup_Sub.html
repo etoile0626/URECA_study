@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--popup창 자식-->
+    <button onclick="chgParentColor();">부모 창의 색상 바꾸기</button>
+    <button onclick="callParentFuc();">부모 창의 함수 호출하기</button>
+    <button onclick="setTextParent();">부모 창에 글자 전달하기</button>
+    <button onclick="window.close();">현재 창 닫기</button>
+    <script>
+        function chgParentColor(){
+            //opener : 연 사람, 즉 부모
+            window.opener.document.body.style.color="aqua";
+        }
+
+        function callParentFuc(){
+            window.opener.parentFunction();
+        }
+
+        function setTextParent(){
+            window.opener.ALLEN.value = "this text is from child";
+        }
+    </script>
+</body>
+</html>

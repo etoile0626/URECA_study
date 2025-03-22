@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07_5interval.html</title>
+</head>
+<body>
+	<h1 id="banTxt">반짝이는 글입니다.</h1>
+	<button onclick="start();">setInterval</button>
+	<button onclick="end();">clearInterval</button>
+    <script>
+        let funcID;
+        function start() {
+            funcID = setInterval(chgTxtColor,500);//반복(작업,간격).
+        }
+        function chgTxtColor() {
+            banTxt.style.color
+            = (banTxt.style.color == "red")? "blue" : "red";
+        }
+        function end() {
+            clearInterval(funcID);
+        }
+    </script>
+</body>
+</html>

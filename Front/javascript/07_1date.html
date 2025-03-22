@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07_1date.html</title>
+</head>
+<body>
+    <script>
+        let date = new Date();
+        document.write("<h3>년 : " + date.getFullYear() + "</h3>");
+        document.write("<h3>월 : " + (date.getMonth()+1) + "</h3>");//0 ~ 11
+        document.write("<h3>일 : " + date.getDate() + "</h3>");
+        document.write("<h3>요일 : " + date.getDay() + "</h3>");//0 ~ 6//일 ~ 토
+        document.write("<h3>시 : " + date.getHours() + "</h3>");
+        document.write("<h3>분 : " + date.getMinutes() + "</h3>");
+        document.write("<h3>초 : " + date.getSeconds() + "</h3>");
+    </script>
+</body>
+</html>

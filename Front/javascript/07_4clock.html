@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07_4clock.html</title>
+</head>
+<body>
+	<h1 id="clock"></h1>
+    <script>
+        function setClock() {
+            let today = new Date();
+            let now = today.getHours() + " : "
+                    + today.getMinutes() + " : "
+                    + today.getSeconds();
+            clock.innerHTML = "<h1>"+now+"</h1>";
+            setTimeout("setClock()", 1000);//반복(작업,간격).
+        }
+	setClock();
+    </script>
+</body>
+</html>

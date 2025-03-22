@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05event_change.html</title>
+</head>
+<body>
+    <select id="chgImage" onchange="chgImageFunction()">
+        <option value="">선택하세요</option>
+        <option value="aqua.jfif">aqua</option>
+        <option value="ruby.jfif">ruby</option>
+    </select>
+    <script>
+        function chgImageFunction() {
+            document.body.background = chgImage.value;
+        }
+    </script>
+    <!------------------------------------------------->
+    <select id="chgColor" onchange="chgColorFunction()">
+        <option value="white">선택하세요</option>
+        <option value="red">red</option>
+        <option value="orange">orange</option>
+        <option value="yellow">yellow</option>
+        <option value="greenyellow">greenyellow</option>
+        <option value="skyblue">skyblue</option>
+        <option value="blue">blue</option>
+        <option value="blueviolet">blueviolet</option>
+    </select>
+    <script>
+        function chgColorFunction() {
+            document.body.bgColor = chgColor.value;
+        }
+    </script>
+</body>
+</html>

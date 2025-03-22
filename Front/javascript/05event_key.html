@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05event_key.html</title>
+</head>
+<body>
+    <h1>콘솔을 열고 테스트 하세요</h1>
+    <input type="text" id="txt1" onkeyup="keyEventFunction(event);" placeholder="type enter here">
+    <input type="text" id="txt2" placeholder="type here">
+    <input type="text" id="txt3" placeholder="type here">
+    <button id="btn_login">Login Button</button>
+    <script>
+        function loginBtnClicked() {
+            alert("로그인 버튼이 클릭됨");
+        }
+
+        function keyEventFunction(event) {
+            console.log(event.keyCode);
+            if(event.keyCode == 13) {
+                loginBtnClicked();
+            }
+        }
+
+        let txt2 = document.querySelector("#txt2");
+        txt2.addEventListener('keydown', event => keyEventFunction(event));
+
+        let txt3 = document.querySelector("#txt3");
+        txt3.addEventListener('keyup', event => console.log('3 : ' + event.keyCode));
+    </script>
+</body>
+</html>
