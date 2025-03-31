@@ -50,8 +50,19 @@
         <a class="dropdown-item" href="/jq2">jq2selector</a>
         <a class="dropdown-item" href="/jq3">jq3selector</a>
         <a class="dropdown-item" href="/jq4">jq4selector</a>
-        <a class="dropdown-item" href="/jq5">jq5selector</a>
-        <a class="dropdown-item" href="/jq6">jq6selector</a>
+        <a class="dropdown-item" href="/jq5">jq5 selector</a>
+        <a class="dropdown-item" href="/jq6">jq6 class selector</a>
+        <a class="dropdown-item" href="/jq7">jq7 element selector</a>
+        <a class="dropdown-item" href="/jq8">jq8 group selector</a>
+        <a class="dropdown-item" href="/jq9">jq9 hide show</a>
+        <a class="dropdown-item" href="/jq10">jq10 fade in out</a>
+        <a class="dropdown-item" href="/jq11">jq11 slideupdown</a>
+        <a class="dropdown-item" href="/jq12">jq12 table hover</a>
+        <a class="dropdown-item" href="/jq13">jq13 nth child</a>
+        <a class="dropdown-item" href="/jq14">jq14 search</a>
+        <a class="dropdown-item" href="/jq15">jq15 addclass</a>
+        <a class="dropdown-item" href="/jq16">jq16 parents</a>
+        <a class="dropdown-item" href="/jq17">jq17 traverse</a>
       </div>
     </li>
   </ul>
