@@ -1,7 +1,6 @@
 package kr.co.ureca.s5getpost.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
@@ -24,41 +23,44 @@ import kr.co.ureca.entity.Emp;
 class JPQLTest {
 
 	public static final Logger logger = LoggerFactory.getLogger(JPQLTest.class);
-	
+
 	@Autowired
 	private EmpRepository repository;
-	
-	//@Test
+
+//	@Test
 	void test() {
-		List<Emp> list = repository.findByDeptno(Integer.valueOf(40));
-		
-		logger.info("test start==================================");
-		for(Emp tmp : list) {
-			logger.info(tmp.toString());
-		}
-		logger.info("test end==================================");
-	}
-	
-	@Test
+
+		List<Emp> list = repository.findByDeptno( Integer.valueOf(40) );
+		logger.info("test start ===========================================");
+		for (Emp emp : list) {
+			logger.info( emp.toString() );
+		} // for
+		logger.info("test end =============================================");
+
+	} // test
+
+//	@Test
 	void test2() {
-		boolean existsEmpno = repository.existsByEmpno(3333);
-		
-		logger.info("test2 start==================================");
-		logger.info(" existsEmpno : " + existsEmpno);
-		logger.info("test2 end==================================");
-		assertEquals(true, existsEmpno);
-	}
-	
-	@Test
+		boolean existsEmpno = repository.existsByEmpno( 3333 ); // false
+
+		logger.info("test2 start ===========================================");
+		logger.info("existsEmpno : " + existsEmpno);
+		logger.info("test2 end =============================================");
+
+		assertThat(existsEmpno).isEqualTo(true);
+	} // test2
+
+//	@Test
 	void test3() {
-		int countByDeptno = repository.countByDeptno(40);
-		
-		logger.info("test3 start==================================");
-		logger.info(" countByDeptno : " + countByDeptno);
-		logger.info("test3 end==================================");
-		
-		assertThat(countByDeptno).isEqualTo(9);
-	}
+		int countDeptno = repository.countByDeptno(40);
+
+		logger.info("test3 start ===========================================");
+		logger.info("countDeptno : " + countDeptno);
+		logger.info("test3 end =============================================");
+
+		assertThat(countDeptno).isEqualTo(9);
+	} // test3
+
 //	@Test
 	void test4() {
 		int deleteEmpno = repository.deleteByEmpno(1111);
@@ -181,4 +183,5 @@ class JPQLTest {
 		logger.info( emp3.get(0)[4].toString() );
 		logger.info("test11 end =============================================");
 	} // test11
-}
+
+} // class

@@ -16,53 +16,68 @@ class RestTestControllerTest2 {
 
 	@Autowired
 	private RestTestController controller;
-	
-	//테스트 코드로 돌린것도 db에 저장됨
-	@Test
+
+//	@Test
 	void testEmpInsert() {
+
 		EmpDTO dto = new EmpDTO(null, 1111, "Hong", "CLERK", 9999, "2020-01-01", 1200, 200, 40);
-		
-		EmpDTO rtnDto = controller.no6(dto);			//insert
-		
-		assertThat(rtnDto).isNotEqualTo(null);
-		
-		assertThat(rtnDto).isInstanceOf(EmpDTO.class);	//클래스가 EmpDTO인지 확인
-		
+
+		EmpDTO rtnDto = controller.no6(dto);
+
+		assertThat(rtnDto).isNotNull();
+
+		assertThat(rtnDto).isInstanceOf(EmpDTO.class);
+
 		assertThat(rtnDto.getEmpno()).isEqualTo(1111);
-		
+
 		assertThat(rtnDto.getEname()).isEqualTo("Hong");
-		
-		System.out.println("============================");
+
+		System.out.println("test start ======================");
 		System.out.println(rtnDto);
-		System.out.println("============================");
-	}
-	
+		System.out.println("test end =========================");
+
+	} // testEmpInsert
+
 	@Test
-	void testEmpUpdate(){
-		EmpDTO dto = new EmpDTO(null, 1111, "HongGilDong", "Analist", 9999, "2020-01-01", 2400, 0, 40);
-		
-		ResponseEntity<EmpDTO> rtnObj = controller.no9(dto);	//update
-		
+	void testEmpUpdate() {
+
+		EmpDTO dto = new EmpDTO(null, 1111, "HongGilDong", "Analist", 9999, "2025-01-01", 2400, 0, 40);
+
+		ResponseEntity<EmpDTO> rtnObj = controller.no9(dto);
+
 		assertThat(rtnObj).isNotNull();
-		
+
 		assertThat(rtnObj).isInstanceOf(ResponseEntity.class);
-		
+
 		assertThat(rtnObj.getStatusCode()).isEqualTo(HttpStatus.OK);
-		
+
 		assertThat(rtnObj.getBody()).isNotNull();
-		
+
 		assertThat(rtnObj.getBody()).isInstanceOf(EmpDTO.class);
 
 		assertThat(rtnObj.getBody().getEmpno()).isEqualTo(1111);
-		
+
 		assertThat(rtnObj.getBody().getEname()).isEqualTo("HongGilDong");
-	}
-	
+
+		System.out.println("test start ======================");
+		System.out.println(rtnObj.getBody());
+		System.out.println("test end =========================");
+
+	} // testEmpUpdate
+
 	@Test
 	void testNo2() {
-		EmpDTO dto = controller.no2(7L);	
-		
-		assertThat(dto).isNotNull();
-	}
 
-}
+		EmpDTO dto = controller.no2(7L);
+
+		assertThat(dto).isNotNull();
+
+		assertThat(dto).isInstanceOf(EmpDTO.class);
+
+		System.out.println("testNo2 start ======================");
+		System.out.println(dto.toString());
+		System.out.println("testNo2 end =========================");
+
+	} // testEmpUpdate
+
+} // class

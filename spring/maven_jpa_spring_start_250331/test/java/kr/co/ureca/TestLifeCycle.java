@@ -1,7 +1,5 @@
 package kr.co.ureca;
 
-import static org.junit.jupiter.api.Assertions.fail;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -9,35 +7,38 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest		//SpringBootTest객체 선언, 이거 있어야 테스트가 돌아감
-public class TestLifeCycle {
-	
-	@BeforeAll	//모든 테스트 시작 전 수행해야하는 작업. ex) 드라이버 로딩
+@SpringBootTest // 스프링 부트 환경에서의 테스트
+class TestLifeCycle {
+
+	@BeforeAll
 	static void beforeAll() {
-		System.out.println("beforeAll");
+		System.out.println("@BeforeAll : 모든 테스트 시작 전에 수행해야 하는 작업. 예-driver loading" );
 	}
-	@BeforeEach	//각 단위 테스트 시작 전 마다 수행
-	void beforeEach() {
-		System.out.println("beforeEach");
-	}
-	@AfterAll	//모든 테스트 수행 후 수행하는 작업. ex)close
+
+	@AfterAll
 	static void afterAll() {
-		System.out.println("afterAll");
+		System.out.println("@AfterAll : 모든 테스트 끝난 후에 수행해야 하는 작업. 예-close()" );
 	}
-	@AfterEach	//각 단위 테스트 종료 할때마다 수행
+
+	@BeforeEach
+	void beforeEach() {
+		System.out.println("@BeforeEach : 각 메소드 테스트 시작 전에 수행하는 작업." );
+	}
+
+	@AfterEach
 	void afterEach() {
-		System.out.println("afterEach");
+		System.out.println("@AfterEach : 각 메소드 테스트 실행 후에 수행하는 작업." );
 	}
-	
+
 	@Test
 	void test() {
-		//fail("not yet implement");
-		System.out.println("default test method");
+		// fail("Not yet implemented"); // 비정상 종료는 빨간색 return.
+		System.out.println("default test method"); // 정상 종료는 초록색 return.
 	}
-	
+
 	@Test
 	void test2() {
-		//fail("not yet implement");
-		System.out.println("second test method");
+		System.out.println("second test method"); // 정상 종료는 초록색 return.
 	}
-}
+
+} // class

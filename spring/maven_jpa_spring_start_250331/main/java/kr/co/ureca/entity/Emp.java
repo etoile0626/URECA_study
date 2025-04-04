@@ -20,10 +20,10 @@ import lombok.ToString;
 @Entity
 @Getter
 @Setter
-@ToString
+@ToString ( callSuper = true )
 @AllArgsConstructor
 @NoArgsConstructor
-public class Emp {
+public class Emp extends BaseEntity{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,5 +55,8 @@ public class Emp {
 	private Integer deptno;
 
 	@Transient		//db에 반영이 안되는 멤버
-	private LocalDateTime createAt;
+	private LocalDateTime createUser;
+	@Transient
+	private LocalDateTime updateUser;
+	
 }
