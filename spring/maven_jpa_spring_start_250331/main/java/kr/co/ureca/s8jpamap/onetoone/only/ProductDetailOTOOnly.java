@@ -17,7 +17,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString (callSuper = true) //말 그대로 super를 부르겠다는 뜻
-@EqualsAndHashCode ( callSuper = true)
+@EqualsAndHashCode ( callSuper = true)	// callSuper는 BaseEntity때문에 부르는거임
 @Table(name = "product_detail_oto_only")
 public class ProductDetailOTOOnly extends BaseEntity{
 

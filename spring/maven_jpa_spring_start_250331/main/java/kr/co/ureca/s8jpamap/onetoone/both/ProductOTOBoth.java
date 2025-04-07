@@ -34,7 +34,7 @@ public class ProductOTOBoth extends BaseEntity{
 	@Column(nullable = false)
 	private Integer stock;
 	
-	@OneToOne(mappedBy = "product")
+	@OneToOne(mappedBy = "product")			//product 쪽이 주체임을 의미
 	@ToString.Exclude		//toString 제외점
 	private ProductDetailOTOBoth productDetail;
 	

@@ -1,4 +1,4 @@
-package kr.co.ureca.s8jpamap.manytoone.only;
+package kr.co.ureca.s8jpamap.manytoone.both;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,8 +19,8 @@ import lombok.ToString;
 @Setter
 @ToString (callSuper = true) //말 그대로 super를 부르겠다는 뜻
 @EqualsAndHashCode ( callSuper = true)
-@Table(name = "product_mto_only")
-public class ProductMTOOnly extends BaseEntity{
+@Table(name = "product_mto_both")
+public class ProductMTOBoth extends BaseEntity{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,8 +35,8 @@ public class ProductMTOOnly extends BaseEntity{
 	@Column(nullable = false)
 	private Integer stock;
 	
-	@ManyToOne
+	@ManyToOne								//product 여러개에 하나의 provider product 존재
 	@JoinColumn(name = "provider_id")
 	@ToString.Exclude
-	private ProviderMTOOnly provider;		//provider여러개에 하나의 product 존재?
+	private ProviderMTOBoth provider;		
 }

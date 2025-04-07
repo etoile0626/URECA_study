@@ -29,6 +29,7 @@ public class ProductDetailOTOBoth extends BaseEntity{
 	
 	@OneToOne		//얘랑 1:1 연관 관계임을 명시
 	//@OneToOne(optional = true) product 값 없이 detail 클래스 매핑 가능 <-> false는 불가, default는 true
+	//@OneToOne(optional = true)는 inner join, @OneToOne(optional = false)는 outer join!!
 	@JoinColumn(name = "product_number") //product 객체의 number 변수와 join한다
 	private ProductOTOBoth product;
 }
