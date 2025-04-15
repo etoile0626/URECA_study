@@ -14,40 +14,27 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserSecurityService implements UserDetailsService {
+public class UserSecurityService implements UserDetailsService{
 
 	@Autowired
 	private UserRepository userRepository;
-
+	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
-		Optional<SiteUser> _siteUser = userRepository.findByUsername(username);
-
-		if(_siteUser.isEmpty()) {
-			throw new UsernameNotFoundException("사용자를 찾을수 없습니다.");
+		Optional<SiteUser> opSiteUser = this.userRepository.findByusername(username);
+		if(opSiteUser.isEmpty()) {
+			throw new UsernameNotFoundException("사용자를 찾을 수 없습니다.");
 		}
-
-		SiteUser siteUser = _siteUser.get();
-
+		
+		SiteUser siteUser = opSiteUser.get();
 		List<GrantedAuthority> authorities = new ArrayList<>();
-
 		if("admin".equals(username)) {
-			authorities.add( new SimpleGrantedAuthority( UserRole.ADMIN.getValue() ) );
+			authorities.add(new SimpleGrantedAuthority(UserRole.ADMIN.getValue()));
 		} else {
-			authorities.add( new SimpleGrantedAuthority( UserRole.USER.getValue() ) );
+			authorities.add(new SimpleGrantedAuthority(UserRole.USER.getValue()));
 		}
-
+		
 		return new User(siteUser.getUsername(), siteUser.getPassword(), authorities);
+	}	//여기서 User는 스프링 시큐리티의 user를 의미!
 
-	} // loadUserByUsername
-
-} // class
-
-
-
-
-
-
-
-
+}

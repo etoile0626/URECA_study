@@ -13,56 +13,41 @@ import jakarta.validation.Valid;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-
+	
 	@Autowired
 	private UserService userService;
-
+	
 	@GetMapping("/signup")
-	public String signup( UserCreateForm userCreateForm ) {
-		return "signup_form";
-	} // signup
+    public String signup(UserCreateForm userCreateForm) {	//userCreateForm을 넣지 않으면 다시 이 화면으로 올때 입력값들이 날라감 
+        return "signup_form";
+    }
+	
+	@PostMapping("/signup")		//화면에서 넘어온 정보를 userCreateForm으로 받음
+    public String signup(@Valid UserCreateForm userCreateForm, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "signup_form";
+        }
 
-	@PostMapping("/signup")
-	public String signup( @Valid UserCreateForm userCreateForm, BindingResult bindingResult ) {
+        if (!userCreateForm.getPassword1().equals(userCreateForm.getPassword2())) {
+            bindingResult.rejectValue("password2", "passwordInCorrect", 
+                    "2개의 패스워드가 일치하지 않습니다."); //(필드(에러가 난 부분), 에러코드, 에러 메세지)
+            return "signup_form";
+        }
+        
+        try {
+	        userService.create(userCreateForm.getUsername(), 
+	                		userCreateForm.getEmail(), userCreateForm.getPassword1());
+        } catch(DataIntegrityViolationException e) {			//중복 사용자 등록시
+        	e.printStackTrace();
+        	bindingResult.reject("signupFailed", "이미 등록된 사용자 입니다.");
+        	return "signup_form";
+        } catch(Exception e) {									//그 외 기타 에러 시
+        	e.printStackTrace();
+        	bindingResult.reject("signupFailed", e.getMessage());
+        	return "signup_form";
+        }
+        
+        return "redirect:/";
+    }
 
-		if(bindingResult.hasErrors()) {
-			return "signup_form";
-		}
-
-		if( !userCreateForm.getPassword1().equals( userCreateForm.getPassword2() ) ) {
-			bindingResult.rejectValue("password2"
-										, "passwordInCorrect"
-										, "2개의 패스워드가 일치하지 않습니다.");
-			return "signup_form";
-		}
-
-		try {
-			userService.create( userCreateForm.getUsername()
-								, userCreateForm.getPassword1()
-								, userCreateForm.getEmail() );
-		} catch (DataIntegrityViolationException e) {
-			e.printStackTrace();
-			bindingResult.reject("signupFailed", "이미 등록된 사용자입니다.");
-			return "signup_form";
-		} catch (Exception e) {
-			e.printStackTrace();
-			bindingResult.reject("signupFailed", e.getMessage());
-			return "signup_form";
-		}
-
-		return "redirect:/";
-	} // signup
-
-	@GetMapping("/login")
-	public String login() {
-		return "login_form";
-	} // login
-
-} // class
-
-
-
-
-
-
-
+}
