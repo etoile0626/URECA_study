@@ -1,0 +1,21 @@
+#application.properties와 비슷한 역할?
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/urecabook
+    username: ureca
+    password: ureca
+#  sql:
+#    init:
+#      mode: always
+  jpa:
+    database: mysql
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format-sql: true
+    #테이블 생성 후 sql 파일 실행
+    defer-datasource-initialization: true
+    generate-ddl: true
