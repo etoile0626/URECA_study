@@ -5,6 +5,9 @@ spring:
     url: jdbc:mysql://localhost:3306/urecabook
     username: ureca
     password: ureca
+  sql:
+    init:
+      mode: never
   jpa:
     database: mysql
     hibernate:
