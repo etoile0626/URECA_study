@@ -35,6 +35,8 @@ import lombok.Setter;
 @Table
 public class User implements UserDetails{
 	
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -57,11 +59,11 @@ public class User implements UserDetails{
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return this.roles.stream().map(SimpleGrantedAuthority :: new).collect(Collectors.toList());
 	}
-//여기 뭐 고쳐야했던거 같은데
+
 	@Override
 	@JsonProperty(access = Access.WRITE_ONLY)
 	public String getUsername() {
-		return null;
+		return this.uid;
 	}
 	
 	@Override

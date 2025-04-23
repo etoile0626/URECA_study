@@ -16,6 +16,9 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import kr.co.ureca.exception.CustomAccessDeniedHandler;
+import kr.co.ureca.exception.CustomAuthenticationEntryPoint;
+
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true) //
@@ -36,10 +39,14 @@ public class SecurityConfig {
 					session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) //rest api 방식에서는 stateless로
 			.authorizeHttpRequests( 
 					authorize -> authorize
-										//.requestMatchers("/emp/**").authenticated()	//emp에 대해 인증이 필요하다
-										//.requestMatchers("/admin/**").hasRole("ADMIN") 
+										.requestMatchers("/emp/**").authenticated()	//emp에 대해 인증이 필요하다
+										//.requestMatchers("/emp/**").hasRole("ADMIN") 
 										.anyRequest().permitAll()	//모든 요청에 대해 permitall
 			)
+			.exceptionHandling(
+					exception -> exception
+									.accessDeniedHandler(new CustomAccessDeniedHandler())
+									.authenticationEntryPoint(new CustomAuthenticationEntryPoint()) )
 			//앞에서 선언한 이 설정들은 jwtauthentication필터 앞에 와야하고 UsernamePasswordAuthenticationFilter의 형태여야한다?
 			.addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class)
 		;

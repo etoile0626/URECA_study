@@ -2,8 +2,6 @@ package kr.co.ureca.config;
 
 import java.io.IOException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -12,11 +10,8 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import kr.co.ureca.service.UserDetailsServiceImpl;
 
 public class JwtAuthenticationFilter extends OncePerRequestFilter{
-	
-	private final Logger logger = LoggerFactory.getLogger(JwtAuthenticationFilter.class);
 	
 	private JwtTokenProvider jwtTokenProvider; //얘랑 밀접하게 연관되어 있음?
 	
@@ -29,9 +24,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
 		
-		String token = jwtTokenProvider.resolveToken(request);
+		System.out.println("start JwtAuthenticationFilter - doFilterInternal");
 		
-		logger.info("doFilterInternal - token : " + token);
+		String token = jwtTokenProvider.resolveToken(request);	//토큰이 있나 확인 -> 없으면 토큰 생성
+		
+		System.out.println("JwtAuthenticationFilter - doFilterInternal - token : " + token);
 		
 		//token이 null이 아니고 token이 정상일때 Authentication 가져오기
 		if(token != null && jwtTokenProvider.validateToken(token)) {

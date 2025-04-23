@@ -5,6 +5,7 @@ import java.util.Collections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import kr.co.ureca.config.JwtAuthenticationFilter;
 import kr.co.ureca.config.JwtTokenProvider;
@@ -14,7 +15,7 @@ import kr.co.ureca.dto.SignUpResultDto;
 import kr.co.ureca.entity.User;
 import kr.co.ureca.repository.UserRepository;
 
-//여기 @service 없어도 되나요
+@Service
 public class SignServiceImpl implements SignService{
 	
 	private final Logger logger = LoggerFactory.getLogger(SignServiceImpl.class);
@@ -74,11 +75,12 @@ public class SignServiceImpl implements SignService{
 		
 		SignInResultDto signInResultDto
 							= SignInResultDto.builder()
-						.token(jwtTokenProvider.createToken(String.valueOf(user.getUid()), user.getRoles()))
+						.token(jwtTokenProvider.createToken(
+									String.valueOf(user.getUid()), user.getRoles()))
 						.build();
-		//여기 뭐 있나요 놓침
-		
-		return null;
+		setSuccessResult(signInResultDto);
+
+		return signInResultDto;
 	}
 	
 	private void setSuccessResult(SignUpResultDto result) {
