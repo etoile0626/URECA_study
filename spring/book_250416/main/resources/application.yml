@@ -1,4 +1,5 @@
-#application.properties와 비슷한 역할?
+server:
+  port: 8080
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -7,15 +8,20 @@ spring:
     password: ureca
   sql:
     init:
+      #      mode: always
       mode: never
   jpa:
     database: mysql
     hibernate:
-      ddl-auto: update
+#      ddl-auto: update
+      ddl-auto: create    #테스트 돌릴때만
     show-sql: true
     properties:
       hibernate:
         format-sql: true
     #테이블 생성 후 sql 파일 실행
     defer-datasource-initialization: true
-    generate-ddl: true
+#    generate-ddl: true
+jwt:
+  issuer: ajufresh@gmail.com
+  secret_key: LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry'sstandarddummytexteversincethe1500s,whenanunknownprintertookagalleyoftypeandscrambledittomakeatypespecimenbook.Ithassurvivednotonlyfivecenturies,butalsotheleapintoelectronictypesetting,remainingessentiallyunchanged.Itwaspopularisedinthe1960swiththereleaseofLetrasetsheetscontainingLoremIpsumpassages,andmorerecentlywithdesktoppublishingsoftwarelikeAldusPageMakerincludingversionsofLoremIpsum.
