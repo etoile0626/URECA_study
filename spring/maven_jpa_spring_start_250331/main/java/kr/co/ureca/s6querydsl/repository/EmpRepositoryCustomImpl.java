@@ -9,7 +9,9 @@ import kr.co.ureca.entity.Emp;
 import kr.co.ureca.entity.QEmp;
 
 @Component
-public class EmpRepositoryCustomImpl extends QuerydslRepositorySupport implements EmpRepositoryCustom {
+public class EmpRepositoryCustomImpl
+				extends QuerydslRepositorySupport
+				implements EmpRepositoryCustom {
 
 	public EmpRepositoryCustomImpl() {
 		super(Emp.class);
@@ -17,12 +19,13 @@ public class EmpRepositoryCustomImpl extends QuerydslRepositorySupport implement
 
 	@Override
 	public List<Emp> empByDeptno(Integer deptno) {
-		
 		QEmp qEmp = QEmp.emp;
-		
-		List<Emp> list = from(qEmp).where(qEmp.deptno.eq(deptno)).select(qEmp).fetch();
+
+		List<Emp> list = from(qEmp)
+							.where( qEmp.deptno.eq(deptno) )
+							.select(qEmp)
+							.fetch();
 		return list;
-	}
-	
-	
-}
+	} // empByDeptno
+
+} // class

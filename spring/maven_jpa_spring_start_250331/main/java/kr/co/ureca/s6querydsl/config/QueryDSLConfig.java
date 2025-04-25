@@ -8,15 +8,17 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
-@Configuration	//설정 파일임을 의미
+@Configuration
 public class QueryDSLConfig {
-	
+
 	@PersistenceContext
 	private EntityManager entityManager;
-	
-	@Bean		//이거 쓰려고 config함
-	public JPAQueryFactory jpaQueryFactory(){
-		
+
+	@Bean
+	public JPAQueryFactory jpaQueryFactory() {
+
 		return new JPAQueryFactory(entityManager);
-	}
-}
+
+	} // jpaQueryFactory
+
+} // class

@@ -12,7 +12,6 @@ import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -20,43 +19,44 @@ import lombok.ToString;
 @Entity
 @Getter
 @Setter
-@ToString ( callSuper = true )
-@AllArgsConstructor
+@ToString( callSuper = true )
 @NoArgsConstructor
-public class Emp extends BaseEntity{
+@AllArgsConstructor
+public class Emp extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
 	private Long id;
-	
-	@Column(name="empno", nullable=false, unique=true)
+
+	@Column(name = "empno", nullable = false, unique = true)
 	private Integer empno;
-	
-	@Column
+
+	@Column(name = "ename", nullable = true, unique = false, length = 255)
 	private String ename;
-	
+
 	@Column
 	private String job;
-	
+
 	@Column
 	private Integer mgr;
-	
+
 	@Column
 	private String hiredate;
-	
+
 	@Column
 	private Integer sal;
-	
+
 	@Column
 	private Integer comm;
-	
+
 	@Column
 	private Integer deptno;
 
-	@Transient		//db에 반영이 안되는 멤버
+	// @Transient : DB에 반영 안하는 자바 변수.
+	@Transient
 	private LocalDateTime createUser;
+
 	@Transient
 	private LocalDateTime updateUser;
-	
-}
+
+} // class

@@ -16,7 +16,6 @@ public class InterceptorWorker implements HandlerInterceptor {
 
 	public static final Logger logger = LoggerFactory.getLogger(InterceptorWorker.class);
 
-	//어떤 객체가 실행되기 전에 가로챔
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
@@ -26,8 +25,7 @@ public class InterceptorWorker implements HandlerInterceptor {
 
 		return HandlerInterceptor.super.preHandle(request, response, handler);
 	} // preHandle
-	
-	//어떤 색체가 실행이 완료되고 가로챔
+
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {

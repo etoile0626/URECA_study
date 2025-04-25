@@ -12,7 +12,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EmpDTO {
-	
+
 	private Long id;
 	private Integer empno;
 	private String ename;
@@ -22,4 +22,5 @@ public class EmpDTO {
 	private Integer sal;
 	private Integer comm;
 	private Integer deptno;
-}
+
+} // class

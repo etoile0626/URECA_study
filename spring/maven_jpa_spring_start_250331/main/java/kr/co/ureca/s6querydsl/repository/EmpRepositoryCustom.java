@@ -5,6 +5,7 @@ import java.util.List;
 import kr.co.ureca.entity.Emp;
 
 public interface EmpRepositoryCustom {
-	
-	public List<Emp> empByDeptno(Integer deptno); 
-}
+
+	public List<Emp> empByDeptno(Integer deptno);
+
+} // interface

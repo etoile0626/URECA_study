@@ -9,22 +9,24 @@ import jakarta.persistence.Table;
 import kr.co.ureca.entity.BaseEntity;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
-@ToString (callSuper = true) //말 그대로 super를 부르겠다는 뜻
-@EqualsAndHashCode ( callSuper = true)
+@NoArgsConstructor
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 @Table(name = "provider_mto_only")
-public class ProviderMTOOnly extends BaseEntity{
-	
+public class ProviderMTOOnly extends BaseEntity {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(nullable = false)
 	private String name;
-	
-}
+
+} // class

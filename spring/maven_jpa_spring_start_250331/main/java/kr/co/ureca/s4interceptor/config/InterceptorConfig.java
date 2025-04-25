@@ -1,13 +1,11 @@
 package kr.co.ureca.s4interceptor.config;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
-//WebMvcConfigurationSupport 상속 받았으면 @Configuration 떼고 젤 밑에 메소드 하나 추가해야 사용가능
-//@Configuration // 설정 Bean 등록 
+//@Configuration // 설정 Bean 등록
 public class InterceptorConfig extends WebMvcConfigurationSupport {
 
 	@Override
@@ -30,12 +28,11 @@ public class InterceptorConfig extends WebMvcConfigurationSupport {
 		registry.jsp("/WEB-INF/views/", ".jsp");
 
 	} // configureViewResolvers
-	
+
 	@Override
 	protected void addResourceHandlers(ResourceHandlerRegistry registry) {
-
-	registry.addResourceHandler("/swagger-ui/**")
-	.addResourceLocations("classpath:/META-INF/resources/webjars/swagger-ui/5.17.14/");
+		registry.addResourceHandler("/swagger-ui/**")
+				.addResourceLocations("classpath:/META-INF/resources/webjars/swagger-ui/5.17.14/");
 	} // addResourceHandlers
 
 } // class

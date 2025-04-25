@@ -11,54 +11,51 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 
-@RestController		//화면생산 안하겠다
+@RestController
 @RequestMapping("/validation")
 public class ValidationController {
-	
+
 	public static final Logger logger = LoggerFactory.getLogger(ValidationController.class);
-	
-	@PostMapping("/validation")
+
+	@PostMapping("/valid")
 	public ResponseEntity<String> checkValidationByValid(
-											@Valid ValidRequestDTO validRequestDTO){
-		
-		logger.info(validRequestDTO.toString());
+										@Valid ValidRequestDTO validRequestDTO) {
+		logger.info( validRequestDTO.toString() );
 		return ResponseEntity.status(HttpStatus.OK)
-								.body(validRequestDTO.toString());
-	}
-	
+								.body( validRequestDTO.toString() );
+	} // checkValidationByValid
+
 	@PostMapping("/validated")
 	public ResponseEntity<String> checkValidation(
-											@Validated ValidRequestDTO validRequestDTO){
-		
-		logger.info(validRequestDTO.toString());
+										@Validated ValidRequestDTO validRequestDTO) {
+		logger.info( validRequestDTO.toString() );
 		return ResponseEntity.status(HttpStatus.OK)
-								.body(validRequestDTO.toString());
-	}
-	
+								.body( validRequestDTO.toString() );
+	} // checkValidation
+
 	@PostMapping("/validated/group1")
-	public ResponseEntity<String> checkValidation1(	//Group1만 체크
-							@Validated(ValidationGroup1.class) ValidRequestDTO validRequestDTO){
-		
-		logger.info(validRequestDTO.toString());
+	public ResponseEntity<String> checkValidation1(
+			@Validated(ValidationGroup1.class) ValidRequestDTO validRequestDTO) {
+		logger.info( validRequestDTO.toString() );
 		return ResponseEntity.status(HttpStatus.OK)
-								.body(validRequestDTO.toString());
-	}
-	
+								.body( validRequestDTO.toString() );
+	} // checkValidation1
+
 	@PostMapping("/validated/group2")
-	public ResponseEntity<String> checkValidation2(	//Group2만 체크
-							@Validated(ValidationGroup2.class) ValidRequestDTO validRequestDTO){
-		
-		logger.info(validRequestDTO.toString());
+	public ResponseEntity<String> checkValidation2(
+			@Validated(ValidationGroup2.class) ValidRequestDTO validRequestDTO) {
+		logger.info( validRequestDTO.toString() );
 		return ResponseEntity.status(HttpStatus.OK)
-								.body(validRequestDTO.toString());
-	}
-	
-	@PostMapping("/validated/groupall")
-	public ResponseEntity<String> checkValidation3(	//Group1, 2모두 체크, 여러개 넣을때는 배열 형태(중괄호)로
-		@Validated({ValidationGroup1.class, ValidationGroup2.class}) ValidRequestDTO validRequestDTO){
-		
-		logger.info(validRequestDTO.toString());
+								.body( validRequestDTO.toString() );
+	} // checkValidation2
+
+	@PostMapping("/validated/all-group")
+	public ResponseEntity<String> checkValidation3(
+			@Validated({ValidationGroup1.class, ValidationGroup2.class})
+				ValidRequestDTO validRequestDTO) {
+		logger.info( validRequestDTO.toString() );
 		return ResponseEntity.status(HttpStatus.OK)
-								.body(validRequestDTO.toString());
-	}
-}
+								.body( validRequestDTO.toString() );
+	} // checkValidation3
+
+} // class

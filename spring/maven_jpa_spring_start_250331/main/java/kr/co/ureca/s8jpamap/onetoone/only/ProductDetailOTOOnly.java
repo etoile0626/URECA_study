@@ -10,25 +10,29 @@ import jakarta.persistence.Table;
 import kr.co.ureca.entity.BaseEntity;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
-@ToString (callSuper = true) //말 그대로 super를 부르겠다는 뜻
-@EqualsAndHashCode ( callSuper = true)	// callSuper는 BaseEntity때문에 부르는거임
+@NoArgsConstructor
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 @Table(name = "product_detail_oto_only")
-public class ProductDetailOTOOnly extends BaseEntity{
+public class ProductDetailOTOOnly extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String description;
-	
-	@OneToOne		//얘랑 1:1 연관 관계임을 명시
-	//@OneToOne(optional = true) product 값 없이 detail 클래스 매핑 가능 <-> false는 불가, default는 true
-	@JoinColumn(name = "product_number") //product 객체의 number 변수와 join한다
+
+//	@OneToOne(optional = true) // product 값이 없이 detail 객체를 생성 가능. - default // outer join
+//	@OneToOne(optional = false) // product 값이 없이 detail 객체를 생성 불가능. // inner join
+	@OneToOne
+	@JoinColumn(name = "product_number")
 	private ProductOTOOnly product;
-}
+
+} // class

@@ -20,28 +20,28 @@ import lombok.ToString;
 @ToString
 @Builder
 public class ValidRequestDTO {
-	
+
 	@NotBlank
 	String name;
-	
+
 	@Email
 	String email;
-	
-	//@Pattern(regexp = "01(?:0|1|[6-9])[.-]?(\\d{3}|\\d{4})[.-]?(\\d{4})$")	//regexp = 정규표현식
-	@Telephone		//이렇게 내가 만든 어노테이션 사용 가능
+
+//	@Pattern(regexp = "01(?:0|1|[6-9])[.-]?(\\d{3}|\\d{4})[.-]?(\\d{4})$")
+	@Telephone
 	String phoneNumber;
-	
-	@Min(value = 20, groups = ValidationGroup1.class) 	//ValidationGroup1일때만 검사
-	@Max(value = 40, groups = ValidationGroup1.class) 	//ValidationGroup2일때만 검사
+
+	@Min(value = 20, groups = ValidationGroup1.class)
+	@Max(value = 40, groups = ValidationGroup1.class)
 	int age;
-	
-	@Size(min = 0, max = 40)	//길이 지정
+
+	@Size(min = 0, max = 40)
 	String description;
-	
-	@Positive(groups = ValidationGroup2.class)	//양수만
+
+	@Positive(groups = ValidationGroup2.class)
 	int count;
-	
-	@AssertTrue					//true인지 체크, null은 확인 안함
+
+	@AssertTrue
 	boolean booleanCheck;
-	
-}
+
+} // class

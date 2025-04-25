@@ -5,5 +5,5 @@ import java.util.Map;
 public interface PenService {
 
 	public Map<String, String> write();
-	
-}
+
+} // interface
