@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>interceptor2</title>
-</head>
-<body>
-	<h1>${className}</h1>
-</body>
-</html>
+
+<%@ include file="./header.jsp" %>
+<%@ include file="./nav.jsp" %>
+
+		<h1>interceptor2</h1>
+		<hr>
+		<h1>${className}</h1>
+
+<%@ include file="./footer.jsp" %>
