@@ -40,5 +40,3 @@ class ProductDetailOTOOnlyTest {
 	} // test
 
 } // class
-
-

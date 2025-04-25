@@ -17,6 +17,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import kr.co.ureca.entity.Emp;
 import kr.co.ureca.entity.QEmp;
+import kr.co.ureca.util.PrintUtil;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
@@ -38,7 +39,7 @@ class QueryDSLTest {
 									.and( qEmp.job.eq("SALESMAN") ) )
 							.orderBy(qEmp.sal.asc())
 							.fetch();
-		printTest("test", empList);
+		PrintUtil.printEmpList(QueryDSLTest.class, "test", empList);
 	} // test
 
 //	@Test
@@ -52,7 +53,7 @@ class QueryDSLTest {
 									.and( qEmp.job.eq("SALESMAN") ) )
 							.orderBy(qEmp.sal.asc())
 							.fetch();
-		printTest("test2", empList);
+		PrintUtil.printEmpList(QueryDSLTest.class, "test2", empList);
 	} // test2
 
 	@Test
@@ -83,13 +84,5 @@ class QueryDSLTest {
 		} // for
 		logger.info("test3 end =============================================");
 	} // test3
-
-	private void printTest(String methodName, List<Emp> empList) {
-		logger.info(methodName + " start ===========================================");
-		for (Emp emp : empList) {
-			logger.info(emp.toString());
-		} // for
-		logger.info(methodName + " end =============================================");
-	} // printTest
 
 } // class
