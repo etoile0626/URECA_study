@@ -19,14 +19,16 @@ public class TokenService {
     private final RefreshTokenRepository refreshTokenRepository;
     private final UserRepository userRepository;
 
-    public String createNewAccessToken(String refreshToken){
-        if(!tokenProvider.validToken(refreshToken)){
-            throw new IllegalArgumentException("Unexpected token");
-        }
+    public String createNewAccessToken(String refreshToken) {
+        if( !tokenProvider.validToken(refreshToken) ) {
+            throw new IllegalArgumentException("Unexpected Token");
+        } // if
 
+//        Long userId = refreshTokenService.findByRefreshToken(refreshToken).getUserId();
+//        User user = userService.findById(userId);
         Long userId = refreshTokenRepository.findByRefreshToken(refreshToken).get().getUserId();
         User user = userRepository.findById(userId).get();
 
-        return tokenProvider.generateToken(user, Duration.ofHours(2));
+        return tokenProvider.generateToken( user, Duration.ofHours(2) );
     }
 }

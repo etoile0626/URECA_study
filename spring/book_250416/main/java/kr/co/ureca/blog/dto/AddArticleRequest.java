@@ -16,10 +16,11 @@ public class AddArticleRequest {                //게시글 추가를 위한 dto
     private String content;
 
     @Builder
-    public Article toEntity(){
+    public Article toEntity(String author){
         return Article.builder()
                       .title(title)
                       .content(content)
+                      .author(author)
                       .build();
     }
 }

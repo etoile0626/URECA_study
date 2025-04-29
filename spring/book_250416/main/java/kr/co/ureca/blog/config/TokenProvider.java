@@ -33,7 +33,7 @@ public class TokenProvider {
         Date now = new Date();
         //모르겠다 왜이러는데 뭐 고쳐야함?
         return Jwts.builder()
-                .setHeaderParam(Header.TYPE, Header.JWT_TYPE)
+                .setHeaderParam(Header.TYPE, Header.JWT_TYPE)   // deprecated
                 .issuer(jwtProperties.getIssuer())
                 .expiration(expiry)
                 .subject(user.getEmail())
@@ -43,6 +43,7 @@ public class TokenProvider {
                 .compact();
     }
 
+    //토큰 검증
     public boolean validToken(String token){
         try{
             /* 구시대의 산물
@@ -53,7 +54,6 @@ public class TokenProvider {
             */
             Jwts.parser()
                     .verifyWith( Keys.hmacShaKeyFor( jwtProperties.getSecretKey().getBytes( StandardCharsets.UTF_8 ) ) )
-//                    .setSigningKey(jwtProperties.getSecretKey())
                     .build()
                     .parseSignedClaims(token);
             return true;
@@ -65,9 +65,8 @@ public class TokenProvider {
     private Claims getClaims(String token){
         return Jwts.parser()
                 .verifyWith( Keys.hmacShaKeyFor( jwtProperties.getSecretKey().getBytes( StandardCharsets.UTF_8 ) ) )
-//                .setSigningKey(jwtProperties.getSecretKey())
                 .build()
-                .parseClaimsJws(token) //parseSignedClaims로 바꿔야하나
+                .parseSignedClaims(token)
                 .getBody();
     }
 
@@ -76,6 +75,7 @@ public class TokenProvider {
         return claims.get("id", Long.class);
     }
 
+    //토큰 기반으로 인증정보 가져오기
     public Authentication getAuthentication(String token){
         Claims claims = getClaims(token);
         Set<SimpleGrantedAuthority> authorities

@@ -42,7 +42,8 @@ public class TokenProviderTest {
                 .verifyWith( Keys.hmacShaKeyFor(
                         jwtProperties.getSecretKey().getBytes( StandardCharsets.UTF_8 ) ) )
                 .build()
-                .parseClaimsJws(token).getBody().get("id", Long.class);
+                .parseSignedClaims(token)
+                .getBody().get("id", Long.class);
 
         assertThat(userId).isEqualTo(testUser.getId());
     }
